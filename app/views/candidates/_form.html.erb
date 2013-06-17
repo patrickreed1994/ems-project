@@ -1,0 +1,39 @@
+<%= form_for(@candidate) do |f| %>
+  <% if @candidate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+
+      <ul>
+      <% @candidate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  	<div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :party %><br />
+      <%= f.select(:party, ['DEM', 'GRN', 'IND', 'LIB', 'REP']) %><br />
+    </div>
+
+    <div class="field">
+      <% contests = Contest.find(:all, :order => :name) %>
+      <%= f.label :contest_id %><br />
+      <%= f.collection_select(:contest_id, contests, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <% elections = Election.find(:all, :order => :name) %>
+      <%= f.label :election_id %><br />
+      <%= f.collection_select(:election_id, elections, :id, :name) %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

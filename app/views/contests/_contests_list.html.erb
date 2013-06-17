@@ -1,0 +1,9 @@
+<table class="table">
+  <% @contests.each do |contest| %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td>
+        <%= contest.name %>
+      </td>
+    </tr>
+  <% end %>
+</table>

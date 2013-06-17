@@ -1,0 +1,15 @@
+<table class="table">
+  <% @candidates.each do |candidate| %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td>
+        <%= candidate.name %>
+      </td>
+      <td>
+        | <%= candidate.party %> |
+      </td>
+      <td>
+        <%= Contest.find_by_id(candidate.contest_id).name %>
+      </td>
+    </tr>
+  <% end %>
+</table>

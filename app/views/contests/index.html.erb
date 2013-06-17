@@ -1,0 +1,24 @@
+<h1>Contests</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Election</th>
+  </tr>
+
+<% @contests.each do |contest| %>
+  <tr>
+    <td><%= contest.name %></td>
+    <td><%= Election.find_by_id(contest.election_id).name %></td>
+    <td><%= link_to 'Show', contest %></td>
+    <td><%= link_to 'Edit', edit_contest_path(contest) %></td>
+    <td><%= link_to 'Destroy', contest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contest', new_contest_path %><br />
+<%= link_to 'Elections', elections_path %><br />
+<%= link_to 'Candidates', candidates_path %>

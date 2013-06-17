@@ -1,0 +1,27 @@
+<h1>Elections Management System</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @elections.each do |election| %>
+  <tr>
+    <td><%= election.name %></td>
+    <td class="actions">
+      <%= link_to 'Show Ballot', election %>
+      <%= link_to 'Edit', edit_election_path(election) %>
+      <%= link_to 'Destroy', election, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Election', new_election_path %><br />
+<%= link_to 'Contests', contests_path %><br />
+<%= link_to 'Candidates', candidates_path %>
